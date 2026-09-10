@@ -1,0 +1,18 @@
+[
+
+    {
+        "username": "pwtest@gmail.com",
+        "password": "test3"
+    },
+
+    {
+        "username": "invalid@gmail.com",
+        "password": ""
+    },
+
+    {
+        "username": "",
+        "password": "password123"
+    }
+
+]
