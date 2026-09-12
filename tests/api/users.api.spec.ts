@@ -23,8 +23,8 @@ test('POST -- create a user details', async({ request })=> {
     // object body
     let userdata = {
     name: "Naveen PW Automation Lab",
-    email: "naveenautomationlab@open.com",
-   // email: `naveen ${Date.now()}@gmail.com`, // unique
+    //email: "naveenautomationlab@open.com",
+    email: `automation_${Date.now()}@open.com`, // unique
     gender: "female",
     status: "active"
     } //8591837
@@ -55,7 +55,7 @@ test('PUT -- update a user details', async({ request })=> {
 
 
     // JS object to JSON -> Serialization
-    let response = await request.put('https://gorest.co.in/public/v2/users/8591837', {
+    let response = await request.put('https://gorest.co.in/public/v2/users/8614320', {
         headers: AUTH_TOKEN,
         data: userdata
     });
@@ -73,7 +73,7 @@ test('PUT -- update a user details', async({ request })=> {
 test('DELETE -- delete a user', async({ request })=> {
 
     // JS object to JSON -> Serialization
-    let response = await request.delete('https://gorest.co.in/public/v2/users/8591507', {
+    let response = await request.delete('https://gorest.co.in/public/v2/users/8614320', {
         headers: AUTH_TOKEN,
     });
 
