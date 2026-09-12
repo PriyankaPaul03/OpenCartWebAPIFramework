@@ -23,8 +23,8 @@ test('POST -- create a user details', async({ request })=> {
     // object body
     let userdata = {
     name: "Naveen PW Automation Lab",
-   // email: "naveenautomationlab@open.com",
-    email: `naveen ${Date.now()}@gmail.com`, // unique
+    email: "naveenautomationlab@open.com",
+   // email: `naveen ${Date.now()}@gmail.com`, // unique
     gender: "female",
     status: "active"
     } //8591837
