@@ -1,17 +1,17 @@
 [
 
     {
-        "username": "pwtest@gmail.com",
+        "user_email": "pwtest@gmail.com",
         "password": "test3"
     },
 
     {
-        "username": "invalid@gmail.com",
+        "user_email": "invalid@gmail.com",
         "password": ""
     },
 
     {
-        "username": "",
+        "user_email": "",
         "password": "password123"
     }
 

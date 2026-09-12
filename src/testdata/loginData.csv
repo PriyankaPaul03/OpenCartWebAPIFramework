@@ -1,4 +1,4 @@
-username, password
+user_email, password
 invalid@open.com, wrong123
 , password1
 testingautomation@gmail.com,

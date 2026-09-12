@@ -39,7 +39,7 @@ import { JsonHelper } from '../src/utils/JsonHelper';
     test('login to the app using wrong credentials with data driven approch', async({ loginPage, testData }) => {
 
         for(let row of testData){
-            await loginPage.doLogin(row.username, row.password);
+            await loginPage.doLogin(row.user_email, row.password);
             expect(await loginPage.isInvalidLoginErrorDisplayed()).toBeTruthy();
         }
         
@@ -51,8 +51,8 @@ import { JsonHelper } from '../src/utils/JsonHelper';
     
         for(let row of testData){
 
-            test(`invalid login test with -- ${row.username}, ${row.password}`, async({ loginPage }) => {
-                await loginPage.doLogin(row.username, row.password);
+            test(`invalid login test with -- ${row.user_email}, ${row.password}`, async({ loginPage }) => {
+                await loginPage.doLogin(row.user_email, row.password);
                 expect(await loginPage.isInvalidLoginErrorDisplayed()).toBeTruthy();
         })
 
@@ -63,8 +63,8 @@ import { JsonHelper } from '../src/utils/JsonHelper';
     // let LoginTestData = ExcelHelper.readExcel('src/testdata/OpenCartTestData.xlsx', 'login');
         
     //     for(let row of LoginTestData){
-    //         test(`invalid login test with excel file -- ${row.username}`, async({ loginPage }) => {
-    //             await loginPage.doLogin(row.username, row.password);
+    //         test(`invalid login test with excel file -- ${row.user_email}`, async({ loginPage }) => {
+    //             await loginPage.doLogin(row.user_email, row.password);
     //             expect(await loginPage.isInvalidLoginErrorDisplayed()).toBeTruthy();
     //         })
     //     }
@@ -74,8 +74,8 @@ import { JsonHelper } from '../src/utils/JsonHelper';
     let LoginJsonData = JsonHelper.readJson('src/testdata/loginData.json');
         
         for(let row of LoginJsonData){
-            test(`invalid login test with JSON file -- ${row.username}`, async({ loginPage }) => {
-                await loginPage.doLogin(row.username, row.password);
+            test(`invalid login test with JSON file -- ${row.user_email}`, async({ loginPage }) => {
+                await loginPage.doLogin(row.user_email, row.password);
                 expect(await loginPage.isInvalidLoginErrorDisplayed()).toBeTruthy();
             })
         }
