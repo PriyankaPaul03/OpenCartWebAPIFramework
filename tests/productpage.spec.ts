@@ -51,6 +51,3 @@ import { CsvHelper } from '../src/utils/CsvHelper';
             expect.soft(actualproductinfo.get('ProductHeader')).toBe(row.expecteddata);
         });
     }
-
-
-

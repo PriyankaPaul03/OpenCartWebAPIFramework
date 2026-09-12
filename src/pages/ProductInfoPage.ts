@@ -14,7 +14,7 @@ export class ProductInfoPage extends BasePage {
     // initialize the var
     constructor(page:Page){
         super(page);
-        this.header = page.getByRole('heading', { name: 'MacBook Pro', level: 1 });
+        this.header = page.getByRole('heading', { level: 1 });
         this.productImg = page.locator('div#content li img');
         this.productMetaData = page.locator('div#content .list-unstyled:nth-of-type(1) li');
         this.productPricing = page.locator('div#content .list-unstyled:nth-of-type(2) li');
