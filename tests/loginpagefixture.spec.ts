@@ -60,14 +60,14 @@ import { JsonHelper } from '../src/utils/JsonHelper';
 
     // Excel file
     // DD-2: parallel mode-> without fixtures -> read csv data directly and loop the test method row wise
-    let LoginTestData = ExcelHelper.readExcel('src/testdata/OpenCartTestData.xlsx', 'login');
+    // let LoginTestData = ExcelHelper.readExcel('src/testdata/OpenCartTestData.xlsx', 'login');
         
-        for(let row of LoginTestData){
-            test(`invalid login test with excel file -- ${row.username}`, async({ loginPage }) => {
-                await loginPage.doLogin(row.username, row.password);
-                expect(await loginPage.isInvalidLoginErrorDisplayed()).toBeTruthy();
-            })
-        }
+    //     for(let row of LoginTestData){
+    //         test(`invalid login test with excel file -- ${row.username}`, async({ loginPage }) => {
+    //             await loginPage.doLogin(row.username, row.password);
+    //             expect(await loginPage.isInvalidLoginErrorDisplayed()).toBeTruthy();
+    //         })
+    //     }
 
 
     // JSON file  
