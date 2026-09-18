@@ -1,7 +1,9 @@
 import { test, expect } from "../../src/fixtures/apifixtures";
 
-const TOKEN ='3b963bdbfc9c6b6dc04929f98dc7c108d72594feba64a3a3e550422f900b12ee';
-let AUTH_HEADER = { Authorization: `Bearer ${TOKEN}` };
+const TOKEN = process.env.API_TOKEN!;
+let AUTH_HEADER = { 
+    Authorization: `Bearer ${TOKEN}` 
+};
 
 
 //helper -- generic function -- to create fresh user
@@ -24,7 +26,7 @@ async function createUser(apiHelper: any) {
 // Test-1: Create a user, create and verify : AAA
 // POST -> userid -> Get call -> verify
 
-test('POST -- create user', async({ apiHelper }) => {
+test('@regression POST -- create user', async({ apiHelper }) => {
 
     // create a user
     let userResponse = await createUser(apiHelper);
@@ -39,7 +41,7 @@ test('POST -- create user', async({ apiHelper }) => {
 // Test2: Update a user and verify : AAA
 // POST -> userid -> Put call -> get call -> verify
 
-test('PUT -- update a user', async({ apiHelper }) => {
+test('@regression PUT -- update a user', async({ apiHelper }) => {
 
     let userUpdatedData = {
         status: "inactive"
@@ -64,7 +66,7 @@ test('PUT -- update a user', async({ apiHelper }) => {
 // Test3: Delete a user and verify : AAA
 // Post -> userid -> Delete call -> get call -> verify
 
-test('DELETE -- delete a user', async({ apiHelper }) => {
+test('@regression DELETE -- delete a user', async({ apiHelper }) => {
 
     // create a user
     let userResponse = await createUser(apiHelper);

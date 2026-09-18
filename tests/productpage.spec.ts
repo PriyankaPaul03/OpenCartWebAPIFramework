@@ -1,5 +1,4 @@
 import { test, expect } from '../src/fixtures/pagefixtures';
-import { BasePage } from '../src/pages/BasePage';
 import { CsvHelper } from '../src/utils/CsvHelper';
 
 
@@ -8,7 +7,7 @@ import { CsvHelper } from '../src/utils/CsvHelper';
         await loginPage.doLogin(process.env.USER_EMAIL!, process.env.PASSWORD!);
     })
 
-    test('verify product images count', async({homePage, searchResultsPage, productInfoPage}) => {
+    test('@regression verify product images count', async({homePage, searchResultsPage, productInfoPage}) => {
         await homePage.doSearch('macbook');
         await searchResultsPage.selectProduct('MacBook Pro');
         expect(await productInfoPage.getProductImgCount()).toBe(4);
@@ -16,15 +15,15 @@ import { CsvHelper } from '../src/utils/CsvHelper';
     });
 
     //common test
-    test('comp logo exists on product page', async({basePage}) => {
+    test('@smoke comp logo exists on product page', async({basePage}) => {
         expect(await basePage.isLogoVisible()).toBeTruthy();
     })
 
-    test('footers exists on product page', async({basePage}) => {
+    test('@smoke footers exists on product page', async({basePage}) => {
         expect(await basePage.getFootersCount()).toBe(16);
     })
 
-    test('verify product information/data ', async({homePage, searchResultsPage, productInfoPage}) => {
+    test('@regression verify product information/data ', async({homePage, searchResultsPage, productInfoPage}) => {
         await homePage.doSearch('macbook');
         await searchResultsPage.selectProduct('MacBook Pro');
         let actualproductinfo = await productInfoPage.getProductInfo();

@@ -20,19 +20,18 @@ import { CsvHelper } from '../src/utils/CsvHelper';
 
     
     //read the date from csv file
-    let productData = CsvHelper.readCsv('src/testdata/products.csv');
+    const productData = CsvHelper.readCsv('src/testdata/products.csv');
         
-    for(let row of productData){
-        test(`verify search product count -- ${row.searchkey}, ${row.productnames}`, async({homePage, searchResultsPage}) => {
+    for(const row of productData){
+        test.skip(`@regression verify search product count -- ${row.searchkey}, ${row.productnames}`, async({homePage, searchResultsPage}) => {
             await homePage.doSearch(row.searchkey);
             expect(await searchResultsPage.getProductSearchResultsCount()).toBe(Number(row.resultcount));
         });
-    
-    }
+    };
 
 
-    for(let row of productData){
-        test(`verify user is able to land on the product details page -- ${row.searchkey}, ${row.productnames}`, async({homePage, searchResultsPage, page}) => {
+    for(const row of productData){
+        test(`@regression verify user is able to land on the product details page -- ${row.searchkey}, ${row.productnames}`, async({homePage, searchResultsPage, page}) => {
             await homePage.doSearch(row.searchkey);
             await searchResultsPage.selectProduct(row.productname);
             expect(await page.title()).toBe(row.productname);

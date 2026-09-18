@@ -1,5 +1,4 @@
 import { test, expect } from '../src/fixtures/pagefixtures';
-import { LoginPage } from '../src/pages/LoginPage';
 import { CsvHelper } from '../src/utils/CsvHelper';
 import { ExcelHelper } from '../src/utils/ExcelHelper';
 import { JsonHelper } from '../src/utils/JsonHelper';
@@ -9,34 +8,24 @@ import { JsonHelper } from '../src/utils/JsonHelper';
         await loginPage.goToLoginPage();
     })
 
-    test('login page title test', async( {loginPage }) => {
+    test('@smoke login page title test', async( {loginPage }) => {
         const pageTitle = await loginPage.getPageTitle();
         console.log(pageTitle);
     });
 
-    test('forget pwd link exist test', ({ loginPage }) => {
+    test('@regression forget pwd link exist test', ({ loginPage }) => {
         expect( loginPage.isForgotPasswordLinkExists()).toBeTruthy();
     })
 
-    test('user is able to login', async({ loginPage, homePage} ) => {
+    test('@smoke user is able to login to app test', async({ loginPage, homePage} ) => {
         await loginPage.doLogin(process.env.USER_EMAIL!, process.env.PASSWORD!);
         expect.soft(await homePage.isLogoutLinkExists()).toBeTruthy();
         expect.soft(await homePage.getPageTitle()).toBe('My Account');
 
     })
-
-     //common test
-    test('comp logo exists on product page', async({basePage}) => {
-        expect(await basePage.isLogoVisible()).toBeTruthy();
-    })
-
-    test('footers exists on product page', async({basePage}) => {
-        expect(await basePage.getFootersCount()).toBe(16);
-    })
-
     
     //DD-1: with fixture -> sequence mode - 1 test is running with testdate one by one -- more time consumed, report lengthly
-    test('login to the app using wrong credentials with data driven approch', async({ loginPage, testData }) => {
+    test('@regression login to the app using wrong credentials with data driven approch', async({ loginPage, testData }) => {
 
         for(let row of testData){
             await loginPage.doLogin(row.user_email, row.password);
@@ -78,5 +67,14 @@ import { JsonHelper } from '../src/utils/JsonHelper';
                 await loginPage.doLogin(row.user_email, row.password);
                 expect(await loginPage.isInvalidLoginErrorDisplayed()).toBeTruthy();
             })
-        }
+        };
+
+        //common tests:
+    test('@smoke comp logo exists on product page', async ({ basePage }) => {
+        expect(await basePage.isLogoVisible()).toBeTruthy();
+    });
+
+    test('@smoke footers exist on product page', async ({ basePage }) => {
+        expect(await basePage.getFootersCount()).toBe(16);
+    });
     

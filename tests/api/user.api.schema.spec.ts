@@ -1,6 +1,7 @@
 import { test, expect } from "../../src/fixtures/apifixtures";
 import Ajv from 'ajv';
 
+let TOKEN = process.env.API_TOKEN;
 let AUTH_HEADER = { Authorization: `Bearer ${process.env.API_TOKEN}` };
 let ajv = new Ajv();
 
@@ -38,7 +39,7 @@ let userArrayschema = {
     "items": userSchema
 }
 
-test('POST API --- create a user', async ({ apiHelper }) => {
+test('@smoke GET -- get a user', async ({ apiHelper }) => {
 
     let userdata = {
         name: "Schema validation",
@@ -52,7 +53,7 @@ test('POST API --- create a user', async ({ apiHelper }) => {
     expect(createResponse.status).toBe(201);
     let userID = createResponse.body.id;
 
-    // get -- get the 
+   //get - get a user
     let getUserresponse = await apiHelper.get(`/public/v2/users/${userID}`, AUTH_HEADER);
     expect(getUserresponse.status).toBe(200);
 
@@ -65,13 +66,12 @@ test('POST API --- create a user', async ({ apiHelper }) => {
     }
 
     expect(isSchemaValid).toBeTruthy();
-})
+});
 
 
-test('GET API --- validate array user', async ({ apiHelper }) => {
+test('@smoke GET -- get all users', async ({ apiHelper }) => {
 
-
-    // get -- get the 
+    //get - get a user 
     let getUserresponse = await apiHelper.get('/public/v2/users', AUTH_HEADER);
     expect(getUserresponse.status).toBe(200);
 

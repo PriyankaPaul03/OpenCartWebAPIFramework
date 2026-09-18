@@ -13,16 +13,16 @@ import { test, expect } from '@playwright/test';
     })
 
 
-    test('login page title test', async() => {
+    test.skip('login page title test', async() => {
         const pageTitle = await loginpage.getPageTitle();
         console.log(pageTitle);
     });
 
-    test('forget pwd link exist test', () => {
+    test.skip('forget pwd link exist test', () => {
         expect( loginpage.isForgotPasswordLinkExists()).toBeTruthy();
     })
 
-    test('user is able to login', async() => {
+    test.skip('user is able to login', async() => {
         await loginpage.doLogin('testingautomation@gmail.com', 'pw123');
         expect.soft(await homepage.isLogoutLinkExists()).toBeTruthy();
         expect.soft(await homepage.getPageTitle()).toBe('My Account');

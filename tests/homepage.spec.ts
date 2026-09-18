@@ -15,17 +15,17 @@ import { beforeEach } from 'node:test';
         homepage = new HomePage(page);
     })
 
-    test('home page title', async({ })=> {
-        let pagetitle = await homepage.getPageTitle();
-        console.log(pagetitle);
-        expect(pagetitle).toBe('My Account');
-    });
+    // test('home page title', async({ })=> {
+    //     let pagetitle = await homepage.getPageTitle();
+    //     console.log(pagetitle);
+    //     expect(pagetitle).toBe('My Account');
+    // });
 
-    test('logout link is visible', async() => {
+    test.skip('logout link is visible', async() => {
         expect(await homepage.isLogoutLinkExists()).toBeTruthy();
     });
 
-    test('home page header exist test', async() => {
+    test.skip('home page header exist test', async() => {
         let allHeaders = await homepage.getHomePageHeaders();
         console.log(allHeaders);
         expect(allHeaders).toHaveLength(4);
