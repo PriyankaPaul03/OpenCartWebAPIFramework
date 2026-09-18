@@ -4,7 +4,7 @@ import { test, expect } from '../src/fixtures/pagefixtures';
 
     test.beforeEach(async({ loginPage }) => {
         await loginPage.goToLoginPage();
-        await loginPage.doLogin(process.env.USERNAME!, process.env.PASSWORD!);
+        await loginPage.doLogin(process.env.USER_EMAIL!, process.env.PASSWORD!);
     })
 
     test('@smoke home page title', async({ homePage })=> {
