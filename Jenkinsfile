@@ -101,7 +101,10 @@ pipeline {
                 echo "  Running SANITY @smoke on DEV"
                 echo "========================================="
                 dir('qa-tests') {
-                    bat 'rm -rf allure-results reports'
+                    bat '''
+                        if exist allure-results rmdir /s /q allure-results
+                        if exist reports rmdir /s /q reports
+                    '''
                     withCredentials([
                         usernamePassword(credentialsId: 'dev-credentials',
                             usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD'),
@@ -167,7 +170,10 @@ pipeline {
                 echo "  Running REGRESSION (all tests) on QA"
                 echo "========================================="
                 dir('qa-tests') {
-                    bat 'rm -rf allure-results reports'
+                    bat '''
+                        if exist allure-results rmdir /s /q allure-results
+                        if exist reports rmdir /s /q reports
+                    '''
                     withCredentials([
                         usernamePassword(credentialsId: 'qa-credentials',
                             usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD'),
@@ -233,7 +239,10 @@ pipeline {
                 echo "  Running SANITY @smoke on STAGE"
                 echo "========================================="
                 dir('qa-tests') {
-                    bat 'rm -rf allure-results reports'
+                    bat '''
+                        if exist allure-results rmdir /s /q allure-results
+                        if exist reports rmdir /s /q reports
+                    '''
                     withCredentials([
                         usernamePassword(credentialsId: 'stage-credentials',
                             usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD'),
@@ -307,7 +316,10 @@ pipeline {
                 echo "  Running SMOKE @smoke on PROD"
                 echo "========================================="
                 dir('qa-tests') {
-                    bat 'rm -rf allure-results reports'
+                    bat '''
+                        if exist allure-results rmdir /s /q allure-results
+                        if exist reports rmdir /s /q reports
+                    '''
                     withCredentials([
                         usernamePassword(credentialsId: 'prod-credentials',
                             usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD'),
